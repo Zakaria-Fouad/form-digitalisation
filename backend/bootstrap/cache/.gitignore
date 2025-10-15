@@ -1,0 +1,3 @@
+*
+!.gitignore
+icacls "C:\Users\Admin\OneDrive\Desktop\Informatiser-Formulaire\backend\bootstrap\cache" /grant Everyone:(OI)(CI)F

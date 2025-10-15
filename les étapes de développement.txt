@@ -1,0 +1,70 @@
+les étapes de développement de l'application:
+
+## 1. Initialisation du projet
+
+- **Backend** : Initialise Laravel dans backend, configure `.env` (base de données, clés, etc.), lance les migrations de base.
+- **Frontend** : Initialise React dans frontend, configure Tailwind, ESLint, etc.
+
+## 2. Modélisation de la base de données
+
+- Crée les migrations pour toutes les tables décrites : `users`, `formulaires`, `exports`, `imports`, `notations`, `candidatures`, `statistiques`.
+- Crée les modèles Eloquent correspondants dans Models.
+
+## 3. Authentification & gestion des rôles
+
+- Implémente l’authentification avec Laravel Sanctum.
+- Crée les middlewares pour protéger les routes selon le rôle (`amc`, `cms`, `jury`).
+
+## 4. API RESTful
+
+- Crée les contrôleurs dans Controllers pour chaque rôle : AMC, CMS, Jury, Auth.
+- Implémente les routes API dans backend/routes/api.php pour :
+  - Connexion/inscription
+  - Soumission de formulaires
+  - Gestion des comptes AMC et Jury
+  - Export/import de fichiers
+  - Notation des dossiers
+
+## 5. Frontend : structure et navigation
+
+- Crée les pages React dans frontend/src/pages/ pour chaque interface (tableaux de bord, formulaires, gestion, etc.).
+- Implémente la navigation avec React Router.
+- Crée les composants réutilisables dans frontend/src/components/.
+
+## 6. Communication Frontend/Backend
+
+- Configure Axios dans frontend/src/services/ pour communiquer avec l’API Laravel.
+- Gère l’authentification et le stockage du token côté frontend (Context API).
+
+## 7. Fonctionnalités par rôle
+
+- **AMC** : Formulaire de participation, consultation/modification des dossiers.
+- **CMS** : Tableau de bord, gestion des comptes, validation, export/import, statistiques.
+- **Jury** : Import des dossiers, notation, envoi des résultats.
+
+## 8. Gestion des fichiers (Excel/PDF)
+
+- Implémente l’export/import Excel avec Laravel Excel.
+- Génère les PDF de notation automatiquement.
+
+## 9. Sécurité
+
+- Valide toutes les requêtes côté backend.
+- Hache les mots de passe.
+- Protège les routes et vérifie les rôles.
+
+## 10. Tests
+
+- Écris des tests unitaires et fonctionnels dans tests.
+- Teste les composants React et les appels API.
+
+## 11. Déploiement
+
+- Prépare le backend pour Render/VPS.
+- Déploie le frontend sur Netlify/Vercel.
+- Configure la base de données distante.
+
+## 12. Documentation
+
+- Mets à jour le README.md avec les instructions d’installation, d’utilisation et d’API.
+
