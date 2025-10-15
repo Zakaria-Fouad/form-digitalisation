@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -10,7 +11,7 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -50,5 +51,13 @@ class User extends Authenticatable
     public function candidatures()
     {
         return $this->hasMany(Candidature::class, 'amc_id');
+    }
+
+    /**
+     * Indique à Laravel d'utiliser le champ mot_de_passe comme mot de passe.
+     */
+    public function getAuthPassword()
+    {
+        return $this->mot_de_passe;
     }
 }
